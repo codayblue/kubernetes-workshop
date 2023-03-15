@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: awesome-app
+spec:
+  rules:
+  - host: rancher.local
+    http:
+      paths:
+      - backend:
+          service:
+            name: awesome-app
+            port:
+              number: 8080
+        path: /
+        pathType: Prefix
