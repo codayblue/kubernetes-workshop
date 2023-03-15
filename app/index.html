@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+
+  <body>
+    <h1 class="title">Kube Across Environments</h1>
+
+    <ul class="frames"></ul>
+
+    <section class="controls">
+      <form class="controls__buttonGroup controls__buttonGroup--addFrame">
+        <button class="controls__button controls__button--addFrame">
+          Add Frame
+        </button>
+        <input class="controls__textInput controls__textInput--url" type="text" placeholder="https://demourl.com" />
+        <input class="controls__textInput controls__textInput--title" type="text" placeholder="Frame Title" />
+      </form>
+      <button
+        class="controls__button controls__button--rounded controls__button--clearFrames"
+      >
+        Clear Frames
+      </button>
+    </section>
+
+    <script type="module" src="/index.js"></script>
+  </body>
+</html>
