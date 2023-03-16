@@ -1,0 +1,147 @@
+body {
+  background: #3b3b3b;
+  font-family: sans-serif;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  text-align: center;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 16px 0 0;
+  font-weight: 100;
+  color: #ecedee;
+  text-shadow: 0px 2px 3px rgba(00, 00, 00, 0.5);
+}
+
+.frames {
+  height: auto;
+  list-style: none;
+  padding: 16px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  background: rgba(00, 00, 00, 0.5);
+  border-radius: 6px;
+  width: fit-content;
+}
+
+.frames:empty::before {
+  content: "Inject A Frame";
+  font-size: 26px;
+  font-weight: 100;
+  color: #cbcbcb;
+  margin: 0;
+  padding: 0;
+}
+
+.frames__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.frames__title {
+  text-align: center;
+  color: #ecedee;
+  margin: 0;
+  padding: 0;
+  font-weight: 100;
+  font-size: 22px;
+}
+
+.frames__dismiss {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  border: 0;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  opacity: 1;
+  transition: all 0.2s;
+}
+
+.frames__dismiss:hover {
+  opacity: 0.5;
+}
+
+.frames__dismiss::before,
+.frames__dismiss::after {
+  content: "";
+  position: absolute;
+  top: 44%;
+  left: 10%;
+  width: 80%;
+  height: 3px;
+  background: rgba(00, 00, 00, 0.8);
+  border-radius: 3px;
+  transform: rotate(45deg);
+}
+
+.frames__dismiss::after {
+  transform: rotate(-45deg);
+}
+
+.frames__frame {
+  height: 700px;
+  width: 375px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+}
+
+.controls__buttonGroup {
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  border: 1px solid #1b1b1b;
+}
+
+.controls__button {
+  cursor: pointer;
+  border: 0;
+  background: #cbcbcb;
+  border-radius: 0;
+  padding: 4px 8px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.controls__button:hover {
+  background: #ecedee;
+}
+
+.controls__button--rounded {
+  border-radius: 6px;
+  border: 1px solid #1b1b1b;
+}
+
+.controls__textInput {
+  border: 0;
+  border-left: 1px solid #3b3b3b;
+  padding: 4px;
+  outline: none;
+  background: #ecedee;
+  max-width: 150px;
+  transition: all .3s;
+}
+
+.controls__textInput:focus {
+  background: #cbcbcb;
+}
