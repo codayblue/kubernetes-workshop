@@ -15,7 +15,7 @@ spec:
         app: awesome-app
     spec:
       containers:
-      - image: ghcr.io/codayblue/kubernetes-workshop:latest
+      - image: ghcr.io/codayblue/kubernetes-workshop/app:latest
         imagePullPolicy: IfNotPresent
         name: app
         ports:

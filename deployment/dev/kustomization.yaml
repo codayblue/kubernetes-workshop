@@ -19,5 +19,5 @@ patches:
         value: dev.rancher.local
 
 images:
-  - name: ghcr.io/codayblue/kubernetes-workshop
+  - name: ghcr.io/codayblue/kubernetes-workshop/app
     newTag: 1.0.0

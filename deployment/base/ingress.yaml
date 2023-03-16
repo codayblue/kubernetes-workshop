@@ -4,7 +4,7 @@ metadata:
   name: awesome-app
 spec:
   rules:
-  - host: rancher.local
+  - host: 127-0-0-1.sslip.io
     http:
       paths:
       - backend:

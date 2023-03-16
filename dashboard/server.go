@@ -7,8 +7,8 @@ import (
 
 func main() {
 	fmt.Println("we're starting the server")
-	fmt.Println("http://localhost:8089")
+	fmt.Println("http://<hostname>")
 
 	http.Handle("/", http.FileServer(http.Dir("./")))
-	http.ListenAndServe(":8089", nil)
+	http.ListenAndServe(":80", nil)
 }

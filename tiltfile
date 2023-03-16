@@ -1,3 +1,3 @@
-docker_build("ghcr.io/codayblue/kubernetes-workshop", "./app")
+docker_build("ghcr.io/codayblue/kubernetes-workshop/dashboard", "./dashboard")
 
-k8s_yaml(kustomize("./deployment/base"))
+k8s_yaml(kustomize("./deployment/dashboard"))
