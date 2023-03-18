@@ -93,12 +93,12 @@ const pollData = () => {
       );
 
       hljs.highlightElement(responseBox);
-
-      setTimeout(pollData, pollingDelay);
     } catch (e) {
       console.error(`there was an issue with the API rqeuest for: ${title}`, e);
     }
   });
+
+  setTimeout(pollData, pollingDelay);
 };
 
 setTimeout(pollData, 1000);
