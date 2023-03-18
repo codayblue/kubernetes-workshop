@@ -101,4 +101,4 @@ const pollData = () => {
   setTimeout(pollData, pollingDelay);
 };
 
-setTimeout(pollData, 1000);
+setTimeout(pollData, pollingDelay);
