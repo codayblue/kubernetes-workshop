@@ -17,6 +17,7 @@ patches:
       - op: replace
         path: /spec/rules/0/host
         value: prod.rancher.local
+  - path: deployment.yaml
 
 images:
   - name: ghcr.io/codayblue/kubernetes-workshop/app

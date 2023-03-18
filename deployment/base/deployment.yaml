@@ -5,7 +5,7 @@ metadata:
     app: awesome-app
   name: awesome-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: awesome-app
@@ -21,10 +21,4 @@ spec:
         ports:
           - name: http
             containerPort: 80
-        resources:
-          limits:
-            cpu: 2000m
-            memory: 512Mi
-          requests:
-            cpu: 1000m
-            memory: 512Mi
+        resources: {}
