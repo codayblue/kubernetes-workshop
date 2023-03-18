@@ -1,29 +1,39 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="/index.css" />
-  </head>
 
-  <body>
-    <h1 class="title">Kube Across Environments</h1>
+<head>
+  <!-- I'm lazy, CDN is good enough for a talk -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-dark.min.css"
+    integrity="sha512-Vj6gPCk8EZlqnoveEyuGyYaWZ1+jyjMPg8g4shwyyNlRQl6d3L9At02ZHQr5K6s5duZl/+YKMnM3/8pDhoUphg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <ul class="frames"></ul>
+  <!-- This is the actual good code -->
+  <link rel="stylesheet" href="/index.css" />
+</head>
 
-    <section class="controls">
-      <form class="controls__buttonGroup controls__buttonGroup--addFrame">
-        <button class="controls__button controls__button--addFrame">
-          Add Frame
-        </button>
-        <input class="controls__textInput controls__textInput--url" type="text" placeholder="https://demourl.com" />
-        <input class="controls__textInput controls__textInput--title" type="text" placeholder="Frame Title" />
-      </form>
-      <button
-        class="controls__button controls__button--rounded controls__button--clearFrames"
-      >
-        Clear Frames
+<body>
+  <h1 class="title">Kube Across Environments</h1>
+
+  <ul class="frames"></ul>
+
+  <section class="controls">
+    <form class="controls__buttonGroup controls__buttonGroup--addFrame">
+      <button class="controls__button controls__button--addFrame">
+        Add Frame
       </button>
-    </section>
+      <input class="controls__textInput controls__textInput--url" type="text" placeholder="https://demourl.com" />
+      <input class="controls__textInput controls__textInput--title" type="text" placeholder="Frame Title" />
+    </form>
+    <button class="controls__button controls__button--rounded controls__button--clearFrames">
+      Clear Frames
+    </button>
+  </section>
 
-    <script type="module" src="/index.js"></script>
-  </body>
+  <!-- I'm lazy, CDN is good enough for a talk -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+  <!-- This is the actual good code -->
+  <script type="module" src="/index.js"></script>
+</body>
+
 </html>

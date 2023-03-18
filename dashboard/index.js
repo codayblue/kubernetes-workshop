@@ -19,7 +19,7 @@ const clearFrameButton = document.querySelector(
 /**
  * Injects a frame into the document
  */
-const injectFrame = (event) => {
+const injectFrame = async (event) => {
   event.preventDefault();
 
   // Grab our inputs to get the provided values
@@ -32,19 +32,19 @@ const injectFrame = (event) => {
     title: titleInput.value,
   };
 
-  const frame = createFrame(data);
+  const frame = await createFrame(data);
 
   appendFrame(data);
 
-  frames.appendChild(frame);
+  frames.append(frame);
 };
 
 /**
  * Bootstraps the state of the application
  */
 if (getStoredIframes().length > 0) {
-  getStoredIframes().forEach((storedIframe) => {
-    frames.appendChild(createFrame(storedIframe));
+  getStoredIframes().forEach(async (storedIframe) => {
+    frames.append(await createFrame(storedIframe));
   });
 }
 
@@ -63,3 +63,42 @@ clearFrameButton.addEventListener("click", () => {
     button.click();
   });
 });
+
+/**
+ * Poll the frames for new data
+ * 
+ * We're nesting timeouts so stray intervals don't stay alive if something goes wrong
+ */
+const pollingDelay = 2 * 1000; // In miliseconds, first digit is number of seconds
+
+const pollData = () => {
+  const frameContainers = document.querySelectorAll(`.frames__container`);
+
+  frameContainers.forEach(async (container) => {
+    const { url, title } = container.dataset;
+    const responseBox = container.querySelector('.frames__frame');
+
+    try {
+      if (!responseBox) {
+        console.debug('old references to bad containers are being kept');
+
+        return;
+      }
+
+      const response = await fetch(url);
+      const jsonResponse = await response.json();
+
+      responseBox.replaceChildren(
+        document.createTextNode(JSON.stringify(jsonResponse, null, 2))
+      );
+
+      hljs.highlightElement(responseBox);
+
+      setTimeout(pollData, pollingDelay);
+    } catch (e) {
+      console.error(`there was an issue with the API rqeuest for: ${title}`, e);
+    }
+  });
+};
+
+setTimeout(pollData, 1000);

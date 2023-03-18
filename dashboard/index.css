@@ -94,10 +94,14 @@ body {
 }
 
 .frames__frame {
-  height: 700px;
+  height: 375px;
   width: 375px;
   border-radius: 6px;
   overflow: hidden;
+  background: rgba(33, 33, 33, .75);
+  padding: 16px;
+  margin: 0;
+  font-size: 16px;
 }
 
 .controls {
