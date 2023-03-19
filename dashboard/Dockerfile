@@ -8,5 +8,6 @@ RUN CGO_ENABLED=0 go build
 FROM scratch
 
 COPY --from=Build /app /app
+WORKDIR /app
 
 CMD [ "/app/dashboard" ]

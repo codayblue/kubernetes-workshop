@@ -21,4 +21,4 @@ patches:
 
 images:
   - name: ghcr.io/codayblue/kubernetes-workshop/app
-    newTag: 0.5.0
+    newTag: 0.0.1
