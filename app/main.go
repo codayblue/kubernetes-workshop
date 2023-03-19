@@ -9,7 +9,7 @@ import (
 type Response struct {
 	Msg         string `json:"message"`
 	API_version string `json:"api_version"`
-	Success     bool   `json:"sucess"`
+	Success     bool   `json:"success"`
 }
 
 func getResponse() *Response {
