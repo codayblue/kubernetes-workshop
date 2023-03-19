@@ -15,8 +15,11 @@ const removeFrame = ({ target }) => {
 /**
  * Creates a frame and returns the document node for use
  */
-export const createFrame = ({ url, title }) => {
+export const createFrame = async ({ url, title }) => {
   const listItem = document.createElement("li");
+
+  listItem.dataset.url = url;
+  listItem.dataset.title = title;
 
   listItem.classList.add("frames__container");
 
@@ -26,11 +29,24 @@ export const createFrame = ({ url, title }) => {
 
   button.addEventListener("click", removeFrame);
 
-  const iframe = document.createElement("iframe");
+  const responseBox = document.createElement("pre");
 
-  iframe.classList.add("frames__frame");
-  iframe.setAttribute("src", url);
-  iframe.setAttribute("frameborder", "0");
+  try {
+    const response = await fetch(url);
+    const jsonResponse = await response.json();
+
+    responseBox.classList.add("frames__frame");
+
+    responseBox.appendChild(
+      document.createTextNode(JSON.stringify(jsonResponse, null, 2))
+    );
+
+    hljs.highlightElement(responseBox);
+  } catch (e) {
+    alert('there was a problem retreiving your endpoint');
+
+    console.error(e);
+  }
 
   const titleElement = document.createElement("h1");
 
@@ -38,7 +54,7 @@ export const createFrame = ({ url, title }) => {
   titleElement.appendChild(document.createTextNode(title));
 
   listItem.appendChild(button);
-  listItem.appendChild(iframe);
+  listItem.appendChild(responseBox);
   listItem.appendChild(titleElement);
 
   return listItem;
