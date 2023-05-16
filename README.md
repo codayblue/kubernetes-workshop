@@ -2,7 +2,7 @@
 
 This kubernetes workshop will take you through installing a local cluster, how to deploy to that or a remote cluster using a tool provided by Kubernetes called kubectl.
 
-## Local Cluster Installation
+## Local Environment Installation
 
 One of the best ways to get started with Kubernetes is with a local cluster. This will give you a chance to play with all the features and get a good understanding of kubernetes. We are going to be installing [Rancher Desktop](https://rancherdesktop.io/) which is a Docker Desktop drop in replacement. Rancher Desktop comes with a single node [K3S](https://k3s.io/) Kubernetes cluster out of the box. K3S is a small Kubernetes distro and is a fully certified full featured Kubernetes distro with some nice tools out of the box, and can run in almost any environment [including raspberry pis](https://blog.alexellis.io/raspberry-pi-homelab-with-k3sup/).
 
@@ -18,8 +18,40 @@ With that installed we need one more tool. We need to install [Tilt](https://til
 
 With that you should now have Rancher Desktop installed. Part of that installation comes with kubectl (the command to comuncation with kube clusters), helm, and docker clis. You also now have Tilt installed and we can move on to the next steps.
 
-## Local Development
+Optional: install k9s because it makes visualizing easier.
+
+## K8s first steps
+
+Now that we have a cluster up and running and have the tools installed to get going you are probably now wondering how to run something on the cluster. It is both as easy as running `docker run blah` but it also not very easy to expose services out side of that cluster unless you know what configuration your missing.
 
 TODO
 
-## TODO the rest of the guide
+## Spinning up your first kube service
+
+To create our first service we will use tilt to spin up our services for local sample environment with our local cluster. What tilt does it will build out the application containers and any other services needed and then use the kube api to deploy the objects using our Kubenetes object files, it will then watch and hot reload when the app changes. Tilt is a great tool to have for local development. The Kubernetes object files are generated from templates that can be found in the `helm` directory. We will go over those here in a moment. First lets spin up our environment.
+
+Run the following commands in this directory and hit spacebar to open a browser to see it build and deploy the services to the local cluster.
+
+```bash
+kubectl create namespace dashboard
+kubectl create namespace dev
+tilt up
+```
+
+After that you should end up with a screen that looks like below.
+
+![Tilt Web Interface](assets/tilt-web.png)
+
+Once the status is all check marks then then the app is running and you can find it at <127-0-0-1.sslip.io>. If you ran into issues you can click into the deployments and see if there is any logs to guide you.
+
+### Helm Charts
+
+todo
+
+## Multiple application or Environment deployment
+
+todo
+
+## Final thoughts
+
+todo
