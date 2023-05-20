@@ -2,8 +2,10 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 type Response struct {
@@ -13,9 +15,15 @@ type Response struct {
 }
 
 func getResponse() *Response {
+	message, ok := os.LookupEnv("MESSAGE")
+
+	if !ok {
+		message = "Vegas Programmers"
+	}
+
 	return &Response{
-		Msg:         "Hello World!",
-		API_version: "v0.0.1",
+		Msg:         fmt.Sprintf("Hello %s!", message),
+		API_version: "v1.0.0",
 		Success:     true,
 	}
 }

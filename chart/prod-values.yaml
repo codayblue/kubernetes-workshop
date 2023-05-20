@@ -2,6 +2,10 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+environment:
+  - name: MESSAGE
+    value: Production
+
 replicaCount: 2
 
 image:
